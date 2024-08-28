@@ -95,7 +95,7 @@ def ec2_handler(session):
                             logger.debug(f'EC2 instance \"{instance["InstanceId"]}\" needs to start adding to List')
                             startList.append(instance["InstanceId"])
                         case 'stop':
-                            logger.debug(f'EC2 instance \"{instance["InstanceId"]}\" needs to start adding to List')
+                            logger.debug(f'EC2 instance \"{instance["InstanceId"]}\" needs to stop adding to List')
                             stopList.append(instance["InstanceId"])
                         case 'no_action':
                             logger.debug(f'EC2 instance \"{instance["InstanceId"]}\" has no action at this point')
@@ -112,13 +112,13 @@ def ec2_handler(session):
     # Execute Start and Stop Commands
     if startList:
         logger.info(f'ACTION: Starting {len(startList)} instances:  {startList}')
-        ec2.instances.filter(InstanceIds=startList).start()
+        ec2.start_instances(InstanceIds=startList)
     else:
         logger.info("No Instances to Start")
 
     if stopList:
-        logger.info(f'ACTION: Starting {len(stopList)} instances:  {stopList}')
-        ec2.instances.filter(InstanceIds=stopList).stop()
+        logger.info(f'ACTION: Stopping {len(stopList)} instances:  {stopList}')
+        ec2.stop_instances(InstanceIds=stopList)
     else:
         logger.info("No Instances to Stop")
     return f'{{"startlist" : { startList } , "stopList" : {stopList} }}'
