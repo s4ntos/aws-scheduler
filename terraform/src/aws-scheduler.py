@@ -1,6 +1,6 @@
 import json
 import os
-import pytz
+from zoneinfo import ZoneInfo
 import boto3
 import datetime
 import logging
@@ -12,7 +12,7 @@ logger = logging.getLogger()
 # logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.setLevel(os.getenv('LOG_LEVEL', 'INFO'))
 
-now = int(datetime.datetime.now(pytz.timezone(os.getenv('TZ', "Europe/Lisbon")) ).strftime("%H"))
+now = int(datetime.datetime.now(ZoneInfo((os.getenv('TZ', "Europe/Lisbon")))).strftime("%H"))
 nowDay = datetime.datetime.today().strftime("%a").lower()
 
 def start( schedule_dic: dict , state: str) -> str:
