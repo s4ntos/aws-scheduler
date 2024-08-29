@@ -1,6 +1,6 @@
 import json
 import os
-import sys
+import pytz
 import boto3
 import datetime
 import logging
@@ -12,9 +12,7 @@ logger = logging.getLogger()
 # logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.setLevel(os.getenv('LOG_LEVEL', 'INFO'))
 
-now = int(datetime.datetime.now().strftime("%H"))
-nowMax = datetime.datetime.now() - datetime.timedelta(minutes=59)
-nowMax = int(nowMax.strftime("%H"))
+now = int(datetime.datetime.now(pytz.timezone(os.getenv('TZ', "Europe/Lisbon")) ).strftime("%H"))
 nowDay = datetime.datetime.today().strftime("%a").lower()
 
 def start( schedule_dic: dict , state: str) -> str:
