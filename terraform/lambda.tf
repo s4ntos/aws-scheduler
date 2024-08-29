@@ -20,6 +20,7 @@ resource "aws_lambda_function" "scheduler_lambda" {
     variables = {
       # EC2_SCHEDULE            = var.ec2_schedule
       LOG_LEVEL = "INFO"
+      TZ = "Europe/Lisbon"
     }
   }
 
