@@ -16,7 +16,7 @@ You can also use:
 * 'daily' - all days of the week 
 * 'business' as placeholder for monday - friday.
 * 'weekemd' as placeholder for sat - sun.
-* 
+
 This allow a much smaller configuration in tags. If is needed for configurations
 with multiple times for stoppping an instance, because a value
 of a tag is limitted to 254 characters.
@@ -51,5 +51,5 @@ The aws cloudwatch event rule schedule expression that specifies when the schedu
 
 Default = "cron(5 * * * ? *)"  i.e. 5 minuts past the hour. for debugging use "rate(5 minutes)" See [ScheduledEvents](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html)
 
-### time
-Timezone to use for scheduler. Can be 'local', 'gmt' or an Olson timezone from https://gist.github.com/ykessler/3349954. default is 'gmt'. local time is for the AWS region.
+### TZ
+Timezone to use for scheduler. Can be 'local', 'Europe/Lisbon' see pytz library for Options
