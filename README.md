@@ -15,7 +15,7 @@ If you want to handle multiple stop/starts per day, you will need to pass a list
 You can also use:
 * 'daily' - all days of the week 
 * 'business' as placeholder for monday - friday.
-* 'weekemd' as placeholder for sat - sun.
+* 'weekend' as placeholder for sat - sun.
 
 This allow a much smaller configuration in tags. If is needed for configurations
 with multiple times for stoppping an instance, because a value
